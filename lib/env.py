@@ -1,8 +1,8 @@
 import numpy as np
 
 class GridWorld(object):
-    def __init__(self):
-        self.p_failure = 0.1
+    def __init__(self, p_failure=0.1):
+        self.p_failure = p_failure
         self.action_space = ['left', 'right', 'up', 'down']
 
         self.border = np.array([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -12,6 +12,8 @@ class GridWorld(object):
                                 [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1],
                                 [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1],
                                 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]])
+
+        self.state_space = self.border.shape
 
         self.pos_init = lambda: (np.random.randint(1,6), np.random.randint(1,6))
         self.reward = (5,11)
